@@ -1,0 +1,70 @@
+﻿<Window x:Class="RegistroDeProyectos.UI.Registro.Resgistro_de_proyectos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RegistroDeProyectos.UI.Registro"
+        mc:Ignorable="d"
+        Title="Resgistro_de_proyectos" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="10,0,10,0">
+
+            
+                <Label Content="Proyecto Id:"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="ProyectoIdTextBox" Text="{Binding ProyectoId}" Width="100" Height="18"/>
+                    <Button x:Name="BuscarButton" Margin="5,0">
+                        <StackPanel Orientation="Horizontal">
+                         
+                       
+                        <Label Content="Buscar"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+                <Label Content="Fecha"/>
+                <DatePicker x:Name="FechaDatePicker" SelectedDate="{Binding Fecha}" />
+
+                <Label Content="Descripción de la tarea"/>
+                <TextBox x:Name="DescripcionTextBox" Text="{Binding Descripcion}"/>
+
+
+
+            <StackPanel Orientation="Vertical">
+                <GroupBox Header="Detalles de Proyecto">
+                    <StackPanel>
+                        <Label Content="Requerimiento"/>
+                        <TextBox x:Name="RequerimientoTextBox" Text="{Binding Detalle.Requerimiento}"/>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="TimepoTextBox" Text="{Binding Tiempo}"/>
+                            <Button x:Name="AgregarFilaButton" Margin="10,0" Width="123">
+                                <StackPanel Orientation="Horizontal">
+                                  
+                                    <Label Content="Agregar fila"/>
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="RemoverFilaButton" Margin="10,0"  Width="115">
+                                <StackPanel Orientation="Horizontal">
+                                  
+                                    <Label Content="Eliminar fila"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+
+                        <DataGrid x:Name="DetalleDataGrid" ItemsSource="{Binding Detalle}" Height="80" AutoGenerateColumns="False" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Proyecto Id" Binding="{Binding ProyectoId}" Visibility="Hidden" />
+                                <DataGridTextColumn Header="Requerimiento" Binding="{Binding Requerimiento}"/>
+                                <DataGridTextColumn Header="Tiempo" Binding="{Binding Timepo}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Window>
